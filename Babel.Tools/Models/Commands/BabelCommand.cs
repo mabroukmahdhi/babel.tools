@@ -8,9 +8,8 @@ namespace Babel.Tools.Models.Commands
 {
     public abstract class BabelCommand
     {
-        public BabelCommand(string name, IEnumerable<CommandOption> options)
+        public BabelCommand(IEnumerable<CommandOption> options)
         {
-            Name = name;
             Options = options;
         }
         public abstract string Name { get; }

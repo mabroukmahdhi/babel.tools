@@ -9,8 +9,8 @@ namespace Babel.Tools.Models.Commands
     {
         public const string OptionReplace = "-r|--replace-chars";
         public const string OptionReplaceName = "replace";
-        public DocumentationCommand(string name, IEnumerable<CommandOption> options)
-            : base(name, options)
+        public DocumentationCommand(IEnumerable<CommandOption> options)
+            : base(options)
         { }
 
         public override string Name => "docu";
