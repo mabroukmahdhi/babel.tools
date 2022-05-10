@@ -12,10 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Properties\About.txt">
+    <Content Include="Texts\About.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Properties\AboutDocuCommand.txt">
+    <Content Include="Texts\AboutDocuCommand.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -23,10 +23,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Toolkit.Diagnostics" Version="7.1.2" />
     <PackageReference Include="Xeption" Version="2.2.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Texts\" />
   </ItemGroup>
 
 </Project>

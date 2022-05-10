@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -11,12 +12,12 @@ namespace Babel.Tools.Brokers.Executers
 {
     public partial class ExecuterBroker
     {
-        private const string docuAboutFile = ".\\Texts\\AboutDocuCommand.txt";
+        private const string docuAboutFile = "Texts\\AboutDocuCommand.txt";
         private OutputCollection ExecuteDocumentationCommand(DocumentationCommand command)
         {
             if (command.IsHelpAction)
             {
-                return ReturnAboutFile(docuAboutFile);
+                return ReturnAboutFile(Path.Combine(AssemblyDirectory, docuAboutFile));
             }
 
             if (command.IsReplaceAction)

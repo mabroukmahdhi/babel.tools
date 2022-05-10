@@ -3,13 +3,17 @@
 //**********************************************************
 using Babel.Tools.Models.Commands;
 using Babel.Tools.Models.Outputs;
+using System;
 using System.IO;
+using System.Reflection;
 
 namespace Babel.Tools.Brokers.Executers
 {
     public partial class ExecuterBroker : IExecuterBroker
     {
         private const string documentationCommandName = "docu";
+
+        public static string AssemblyDirectory => Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
         public OutputCollection Execute(IBabelCommand command)
         {
