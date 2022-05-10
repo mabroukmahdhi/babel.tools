@@ -13,7 +13,7 @@ namespace Babel.Tools.Models.Commands
             Name = name;
             Options = options;
         }
-        public abstract string Name { get;  }
+        public abstract string Name { get; }
 
         public IEnumerable<CommandOption> Options { get; set; }
 
