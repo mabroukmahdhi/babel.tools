@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <AssemblyName>BT</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Texts\About.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Texts\About.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\Commands\Exceptions\" />
+  </ItemGroup>
+
+</Project>
