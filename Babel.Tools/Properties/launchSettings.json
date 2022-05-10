@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Babel.Tools": {
+      "commandName": "Project",
+      "commandLineArgs": "docu -h"
+    }
+  }
+}

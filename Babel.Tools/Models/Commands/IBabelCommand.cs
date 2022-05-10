@@ -1,18 +1,17 @@
 ﻿//**********************************************************
 // Copyright (c) 2022 Mabrouk Mahdhi, Messer SE & Co. KGaA
 //**********************************************************
-
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Babel.Tools.Models.Commands
 {
-    public class CommandOption
+    public interface IBabelCommand
     {
-        public string Name { get; set; }
+        string Name { get; }
 
-        public IEnumerable<string> Values { get; set; }
+        IEnumerable<CommandAction> Actions { get; }
 
-        public string PreferedValue => Values?.FirstOrDefault();
+        bool HasOption(string option);
+        bool HasAction(string action);
     }
 }

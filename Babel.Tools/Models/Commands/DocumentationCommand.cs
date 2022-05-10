@@ -1,28 +1,65 @@
 ﻿//**********************************************************
 // Copyright (c) 2022 Mabrouk Mahdhi, Messer SE & Co. KGaA
 //**********************************************************
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Babel.Tools.Models.Commands
 {
     public class DocumentationCommand : BabelCommand
     {
-        public const string OptionReplace = "-r|--replace-chars";
-        public const string OptionReplaceName = "replace";
-        public DocumentationCommand(IEnumerable<CommandOption> options)
-            : base(options)
+        private const string ActionReplace = "replace";
+        private const string ActionReplaceValues = "-r|--replace-chars";
+        private const string ActionReplaceOptions = $"{ActionReplaceIgnoreOption}";
+        private const string ActionReplaceIgnoreOption = "-i";
+
+        public const string CommandName = "docu";
+
+        public DocumentationCommand(string runAction, params string[] runOptions)
+            : base(runAction, runOptions)
         { }
 
-        public override string Name => "docu";
+        public override string Name => CommandName;
 
-        protected override IEnumerable<CommandOption> DefaultOptions
-            => new List<CommandOption>()
+        public override IEnumerable<CommandAction> Actions
+            => GenerateActions();
+
+        public bool IsReplaceAction
+            => ActionReplaceValues.Split('|')
+                            .Any(o => o.Equals(RunAction, StringComparison.OrdinalIgnoreCase));
+
+        public bool HasOptionIgnore
+            => RunOptions?.Any(i => i.Equals(ActionReplaceIgnoreOption, StringComparison.OrdinalIgnoreCase)) ?? false;
+        protected override List<CommandAction> GenerateActions()
+            => new()
             {
-                new CommandOption()
-                {
-                    Name = OptionReplaceName,
-                    Values =OptionReplace.Split('|')
-                }
+                GenerateHelpAction(),
+                GenerateReplaceAction()
             };
+
+        private CommandAction GenerateReplaceAction()
+        {
+            var aValues = ActionReplaceValues.Split('|');
+            var oValues = ActionReplaceOptions.Split('|');
+
+            return new CommandAction()
+            {
+                Name = ActionReplace,
+                Values = aValues.ToList(),
+                Options = oValues.ToList()
+            };
+        }
+
+        private CommandAction GenerateHelpAction()
+        {
+            var aValues = HelpCommands.Split('|');
+
+            return new CommandAction()
+            {
+                Name = "help",
+                Values = aValues.ToList(),
+            };
+        }
     }
 }
