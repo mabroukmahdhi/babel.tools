@@ -103,6 +103,17 @@ namespace Babel.Tools.Brokers.Executers
 
                     File.WriteAllText(file, fileText, encoding);
                 }
+
+                if (count == 0)
+                {
+                    outputs.Warn($"No file was changed, " +
+                        $"if you think this result is not correct " +
+                        $"please check the source folder, now you are here: {folder}.");
+                }
+                else
+                {
+                    outputs.Warn($"{count} file(s) was changed!");
+                }
             }
             catch (Exception ex)
             {

@@ -5,9 +5,11 @@ using Babel.Tools.Brokers.Assemplies;
 using Babel.Tools.Brokers.Executers;
 using Babel.Tools.Brokers.Loggings;
 using Babel.Tools.Models.Commands;
+using Babel.Tools.Models.Commands.Exceptions;
 using Babel.Tools.Services.Foundations.Commands;
 using System;
 using System.IO;
+using System.Text;
 
 namespace Babel.Tools
 {
@@ -34,9 +36,13 @@ namespace Babel.Tools
 
                 commandService.Execute(args);
             }
+            catch (CommandServiceException ex)
+            {
+                LoggingBroker.LogError(ex.GetMessage());
+            }
             catch (Exception ex)
             {
-                LoggingBroker.LogError(ex.ToString());
+                LoggingBroker.LogError(ex.Message);
             }
         }
     }

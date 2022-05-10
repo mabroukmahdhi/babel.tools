@@ -31,8 +31,13 @@ namespace Babel.Tools.Services.Foundations.Commands
                 if (commandName.Equals(BabelCommand.DocumentationCommandName, System.StringComparison.OrdinalIgnoreCase))
                 {
                     var arguments = args.Cast<string>().ToArray();
+                    string action = "-h";
+                    if (arguments.Length > 1)
+                    {
+                        action = arguments[1];
+                    }
                     string[] options = arguments.Skip(2).ToArray();
-                    command = new DocumentationCommand(arguments[1], options);
+                    command = new DocumentationCommand(action, options);
                     ValidateCommandAction(command, arguments[1]);
                     return command;
                 }
@@ -40,9 +45,15 @@ namespace Babel.Tools.Services.Foundations.Commands
                 if (commandName.Equals(BabelCommand.ImportFilesCommandName, System.StringComparison.OrdinalIgnoreCase))
                 {
                     var arguments = args.Cast<string>().ToArray();
+                    string action = "-h";
+                    if (arguments.Length > 1)
+                    {
+                        action = arguments[1];
+                    }
                     string[] options = arguments.Skip(2).ToArray();
-                    command = new ImportFilesCommand(arguments[1], options);
-                    ValidateCommandAction(command, arguments[1]);
+                    command = new ImportFilesCommand(action, options);
+
+                    ValidateCommandAction(command, action);
                     return command;
                 }
 
