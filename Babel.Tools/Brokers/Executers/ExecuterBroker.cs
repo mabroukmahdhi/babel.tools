@@ -11,7 +11,6 @@ namespace Babel.Tools.Brokers.Executers
 {
     public partial class ExecuterBroker : IExecuterBroker
     {
-        private const string documentationCommandName = "docu";
 
         private readonly string assemlyLocation;
         public ExecuterBroker(string assemlyLocation)
@@ -19,9 +18,14 @@ namespace Babel.Tools.Brokers.Executers
 
         public OutputCollection Execute(IBabelCommand command)
         {
-            if (command.Name.Equals(documentationCommandName))
+            if (command.Name.Equals(BabelCommand.DocumentationCommandName))
             {
                 return ExecuteDocumentationCommand(command as DocumentationCommand);
+            }
+
+            if (command.Name.Equals(BabelCommand.ImportFilesCommandName))
+            {
+                return ExecuteImportFilesCommand(command as ImportFilesCommand);
             }
 
             return ReturnNoCommandCanBeRun();

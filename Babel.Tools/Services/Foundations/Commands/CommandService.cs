@@ -28,12 +28,21 @@ namespace Babel.Tools.Services.Foundations.Commands
 
                 IBabelCommand command = null;
 
-                if (commandName.Equals(DocumentationCommand.CommandName, System.StringComparison.OrdinalIgnoreCase))
+                if (commandName.Equals(BabelCommand.DocumentationCommandName, System.StringComparison.OrdinalIgnoreCase))
                 {
                     var arguments = args.Cast<string>().ToArray();
                     string[] options = arguments.Skip(2).ToArray();
                     command = new DocumentationCommand(arguments[1], options);
                     ValidateCommandAction(command, arguments[1]);
+                    return command;
+                }
+
+                if (commandName.Equals(BabelCommand.ImportFilesCommandName, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    string action = args[1] as string;
+                    command = new ImportFilesCommand(action);
+                    ValidateCommandAction(command, action);
+                    return command;
                 }
 
                 return command;

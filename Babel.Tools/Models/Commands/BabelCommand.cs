@@ -9,10 +9,13 @@ namespace Babel.Tools.Models.Commands
 {
     public abstract class BabelCommand : IBabelCommand
     {
+        public const string ImportFilesCommandName = "impf";
+        public const string DocumentationCommandName = "docu";
         public const string HelpCommands = "-h|--help";
         public static List<string> Commands => new()
         {
-            "docu",
+            ImportFilesCommandName,
+            DocumentationCommandName
         };
 
         public static bool IsHelpCommand(string cmd)
@@ -43,5 +46,16 @@ namespace Babel.Tools.Models.Commands
 
         public virtual bool HasRunOptions => RunOptions?.Any() ?? false;
         protected abstract List<CommandAction> GenerateActions();
+
+        protected virtual CommandAction GenerateHelpAction()
+        {
+            var aValues = HelpCommands.Split('|');
+
+            return new CommandAction()
+            {
+                Name = "help",
+                Values = aValues.ToList(),
+            };
+        }
     }
 }

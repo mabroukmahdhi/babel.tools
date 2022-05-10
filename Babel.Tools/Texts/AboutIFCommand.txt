@@ -1,0 +1,8 @@
+﻿
+Usage: bt impf [action]
+
+Actions:
+  -h|--help			Display help.
+  -a|--adjust		Adjust all columns of container excel import files to AutoFit.
+  -u|--upload		Uploads all files to Team Drive (T).
+

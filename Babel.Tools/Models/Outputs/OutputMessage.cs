@@ -2,6 +2,7 @@
 // Copyright (c) 2022 Mabrouk Mahdhi, Messer SE & Co. KGaA
 //**********************************************************
 using System.Collections.ObjectModel;
+using System.Text;
 
 namespace Babel.Tools.Models.Outputs
 {
@@ -30,6 +31,16 @@ namespace Babel.Tools.Models.Outputs
 
         public void Warn(string message)
             => Add(message, OutputType.Warning);
+
+        public override string ToString()
+        {
+            StringBuilder sb = new();
+            for (int i = 0; i < Count; i++)
+            {
+                sb.AppendLine(this[i].Message);
+            }
+            return sb.ToString();
+        }
 
     }
     public class OutputMessage

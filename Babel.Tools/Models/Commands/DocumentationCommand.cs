@@ -14,13 +14,11 @@ namespace Babel.Tools.Models.Commands
         private const string ActionReplaceOptions = $"{ActionReplaceIgnoreOption}";
         private const string ActionReplaceIgnoreOption = "-i";
 
-        public const string CommandName = "docu";
-
         public DocumentationCommand(string runAction, params string[] runOptions)
             : base(runAction, runOptions)
         { }
 
-        public override string Name => CommandName;
+        public override string Name => DocumentationCommandName;
 
         public override IEnumerable<CommandAction> Actions
             => GenerateActions();
@@ -48,17 +46,6 @@ namespace Babel.Tools.Models.Commands
                 Name = ActionReplace,
                 Values = aValues.ToList(),
                 Options = oValues.ToList()
-            };
-        }
-
-        private CommandAction GenerateHelpAction()
-        {
-            var aValues = HelpCommands.Split('|');
-
-            return new CommandAction()
-            {
-                Name = "help",
-                Values = aValues.ToList(),
             };
         }
     }
