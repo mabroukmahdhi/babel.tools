@@ -39,9 +39,10 @@ namespace Babel.Tools.Services.Foundations.Commands
 
                 if (commandName.Equals(BabelCommand.ImportFilesCommandName, System.StringComparison.OrdinalIgnoreCase))
                 {
-                    string action = args[1] as string;
-                    command = new ImportFilesCommand(action);
-                    ValidateCommandAction(command, action);
+                    var arguments = args.Cast<string>().ToArray();
+                    string[] options = arguments.Skip(2).ToArray();
+                    command = new ImportFilesCommand(arguments[1], options);
+                    ValidateCommandAction(command, arguments[1]);
                     return command;
                 }
 

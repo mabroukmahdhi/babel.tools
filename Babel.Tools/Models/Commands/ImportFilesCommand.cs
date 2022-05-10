@@ -4,8 +4,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Babel.Tools.Models.Commands
 {
@@ -16,8 +14,8 @@ namespace Babel.Tools.Models.Commands
         private const string ActionAdjustValues = "-a|--adjust";
         private const string ActionUploadValues = "-u|--upload";
         private const string ActionUploadOptions = "-o|--overwrite";
-        public ImportFilesCommand(string runAction)
-            : base(runAction, Array.Empty<string>())
+        public ImportFilesCommand(string runAction, params string[] runOptions)
+            : base(runAction, runOptions)
         { }
 
         public override string Name => ImportFilesCommandName;

@@ -7,9 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Text.RegularExpressions;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Babel.Tools.Brokers.Executers
@@ -114,16 +111,17 @@ namespace Babel.Tools.Brokers.Executers
             {
                 string fileName = Path.GetFileName(file);
                 string destFile = Path.Combine(destFolder, fileName);
-                if (File.Exists(destFile))
-                {
-                    outputs.Warn($"The file'{fileName}' exists already and was ignored." +
-                        $" Please use option '-o' if you want to overwrite it.: {destFile}.");
-                }
-                else
+                if (!File.Exists(destFile)
+                    || command.HasOptionOverwrite)
                 {
                     File.Copy(file, destFile, overwrite: true);
                     outputs.Info($"{fileName} successfully copied to: {destFile}.");
+                    continue;
                 }
+
+                outputs.Warn($"The file'{fileName}' exists already and was ignored." +
+                     $" Please use option '-o' if you want to overwrite it.: {destFile}.");
+
             }
 
             return outputs;

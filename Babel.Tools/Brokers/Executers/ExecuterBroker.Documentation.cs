@@ -1,10 +1,12 @@
-﻿using Babel.Tools.Models.Commands;
+﻿//**********************************************************
+// Copyright (c) 2022 Mabrouk Mahdhi, Messer SE & Co. KGaA
+//**********************************************************
+using Babel.Tools.Models.Commands;
 using Babel.Tools.Models.Outputs;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 
