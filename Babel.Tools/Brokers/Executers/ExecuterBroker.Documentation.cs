@@ -17,7 +17,7 @@ namespace Babel.Tools.Brokers.Executers
         {
             if (command.IsHelpAction)
             {
-                return ReturnAboutFile(Path.Combine(AssemblyDirectory, docuAboutFile));
+                return ReturnAboutFile(Path.Combine(assemlyLocation, docuAboutFile));
             }
 
             if (command.IsReplaceAction)
@@ -80,7 +80,7 @@ namespace Babel.Tools.Brokers.Executers
                             continue;
                         fileText = fileText.Replace($"{key}", specialChars[key]);
 
-                        outputs.Log($"All '{key}' chars are by {specialChars[key]} " +
+                        outputs.Log($"All '{key}' chars are changed to '{specialChars[key]}' " +
                                     $"in the file: {file}.");
 
                         update = true;

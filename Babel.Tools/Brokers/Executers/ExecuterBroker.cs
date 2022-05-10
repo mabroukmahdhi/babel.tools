@@ -13,7 +13,9 @@ namespace Babel.Tools.Brokers.Executers
     {
         private const string documentationCommandName = "docu";
 
-        public static string AssemblyDirectory => Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        private readonly string assemlyLocation;
+        public ExecuterBroker(string assemlyLocation)
+            => this.assemlyLocation = assemlyLocation;
 
         public OutputCollection Execute(IBabelCommand command)
         {
@@ -38,13 +40,7 @@ namespace Babel.Tools.Brokers.Executers
         private OutputCollection ReturnAboutFile(string file)
         {
             var outputs = new OutputCollection(linePrefix: "");
-            var lines = File.ReadAllLines(file);
-
-            foreach (var line in lines)
-            {
-                outputs.Log(line);
-            }
-
+            outputs.Log(File.ReadAllText(file));
             return outputs;
         }
 

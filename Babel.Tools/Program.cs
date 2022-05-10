@@ -1,6 +1,7 @@
 ﻿//**********************************************************
 // Copyright (c) 2022 Mabrouk Mahdhi, Messer SE & Co. KGaA
 //**********************************************************
+using Babel.Tools.Brokers.Assemplies;
 using Babel.Tools.Brokers.Executers;
 using Babel.Tools.Brokers.Loggings;
 using Babel.Tools.Models.Commands;
@@ -17,14 +18,19 @@ namespace Babel.Tools
         {
             try
             {
+                var assemblyBroker = new AssemblyBroker();
+                string assemblyDir = assemblyBroker.GetAssemblyDirectory();
+
                 if (args.Length == 0
                     || BabelCommand.IsHelpCommand(args[0]))
                 {
-                    LoggingBroker.Log(File.ReadAllText(".\\Texts\\About.txt"));
+                    LoggingBroker.Log(File.ReadAllText(Path.Combine(assemblyDir, "Texts\\About.txt")));
                     return;
                 }
 
-                var commandService = new CommandService(LoggingBroker, new ExecuterBroker());
+                var commandService = new CommandService(
+                    LoggingBroker,
+                    new ExecuterBroker(assemblyDir));
 
                 commandService.Execute(args);
             }
