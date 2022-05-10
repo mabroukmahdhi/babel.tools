@@ -103,7 +103,7 @@ namespace Babel.Tools.Brokers.Executers
             }
             else
             {
-                outputs.Info($"'{destFolder}' exists already.");
+                outputs.Warn($"The folder '{destFolder}' exists already.");
             }
 
             var files = GetExcelFiles();
@@ -114,8 +114,16 @@ namespace Babel.Tools.Brokers.Executers
             {
                 string fileName = Path.GetFileName(file);
                 string destFile = Path.Combine(destFolder, fileName);
-                File.Copy(file, destFile, overwrite: command.HasOptionOverwrite);
-                outputs.Info($"{fileName} successfully copied to: {destFile}.");
+                if (File.Exists(destFile))
+                {
+                    outputs.Warn($"The file'{fileName}' exists already and was ignored." +
+                        $" Please use option '-o' if you want to overwrite it.: {destFile}.");
+                }
+                else
+                {
+                    File.Copy(file, destFile, overwrite: true);
+                    outputs.Info($"{fileName} successfully copied to: {destFile}.");
+                }
             }
 
             return outputs;
