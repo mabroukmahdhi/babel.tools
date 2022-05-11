@@ -17,7 +17,6 @@
 
 
 Usage: bt [command] [options]
-Usage: dotnet [path-to-application]
 
 Commands:
   docu              Runs actions for the Babel documentation.
