@@ -14,3 +14,13 @@
 |   :   / ;  :   .'   \   :    ||   :    ||  ,   /             '---'     `----'    `----'  |  ,   /'--'.     /  
 |   | ,'  |  ,     .-./    \  /  \   \  /  ---`-'                                           ---`-'   `--'---'   
 `----'     `--`---'   `-'----'    `----'                     
+
+
+Usage: bt [command] [options]
+
+Commands:
+  docu              Runs actions for the Babel documentation.
+  impf              Runs actions for the container data import files 
+
+Options:
+  -h|--help         Display help.  

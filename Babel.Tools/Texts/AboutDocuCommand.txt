@@ -1,0 +1,10 @@
+﻿
+Usage: bt docu [action] [options]  
+
+Actions:
+  -h|--help				Display help.
+  -r|--replace-chars	Replace special chars in babel documentation files.
+
+Options:
+  -i					Search documentation files ONLY in the current folder, subfolder are ignored. 
+
