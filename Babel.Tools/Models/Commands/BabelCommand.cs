@@ -11,11 +11,13 @@ namespace Babel.Tools.Models.Commands
     {
         public const string ImportFilesCommandName = "impf";
         public const string DocumentationCommandName = "docu";
+        public const string ResourceCommandName = "resx";
         public const string HelpCommands = "-h|--help";
         public static List<string> Commands => new()
         {
             ImportFilesCommandName,
-            DocumentationCommandName
+            DocumentationCommandName,
+            ResourceCommandName
         };
 
         public static bool IsHelpCommand(string cmd)

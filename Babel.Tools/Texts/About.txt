@@ -21,6 +21,7 @@ Usage: bt [command] [options]
 Commands:
   docu              Runs actions for the Babel documentation.
   impf              Runs actions for the container data import files 
+  resx              Runs actions for Babel text resources 
 
 Options:
   -h|--help         Display help.  

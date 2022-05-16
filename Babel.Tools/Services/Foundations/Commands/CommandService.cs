@@ -28,15 +28,16 @@ namespace Babel.Tools.Services.Foundations.Commands
 
                 IBabelCommand command = null;
 
+                var arguments = args.Cast<string>().ToArray();
+                string action = "-h";
+                if (arguments.Length > 1)
+                {
+                    action = arguments[1];
+                }
+                string[] options = arguments.Skip(2).ToArray();
+
                 if (commandName.Equals(BabelCommand.DocumentationCommandName, System.StringComparison.OrdinalIgnoreCase))
                 {
-                    var arguments = args.Cast<string>().ToArray();
-                    string action = "-h";
-                    if (arguments.Length > 1)
-                    {
-                        action = arguments[1];
-                    }
-                    string[] options = arguments.Skip(2).ToArray();
                     command = new DocumentationCommand(action, options);
                     ValidateCommandAction(command, arguments[1]);
                     return command;
@@ -44,15 +45,14 @@ namespace Babel.Tools.Services.Foundations.Commands
 
                 if (commandName.Equals(BabelCommand.ImportFilesCommandName, System.StringComparison.OrdinalIgnoreCase))
                 {
-                    var arguments = args.Cast<string>().ToArray();
-                    string action = "-h";
-                    if (arguments.Length > 1)
-                    {
-                        action = arguments[1];
-                    }
-                    string[] options = arguments.Skip(2).ToArray();
                     command = new ImportFilesCommand(action, options);
+                    ValidateCommandAction(command, action);
+                    return command;
+                }
 
+                if (commandName.Equals(BabelCommand.ResourceCommandName, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    command = new ResourceCommand(action, options);
                     ValidateCommandAction(command, action);
                     return command;
                 }

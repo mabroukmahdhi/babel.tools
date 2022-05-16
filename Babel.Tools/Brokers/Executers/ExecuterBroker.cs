@@ -26,6 +26,11 @@ namespace Babel.Tools.Brokers.Executers
                 return ExecuteImportFilesCommand(command as ImportFilesCommand);
             }
 
+            if (command.Name.Equals(BabelCommand.ResourceCommandName))
+            {
+                return ExecuteResourceCommand(command as ResourceCommand);
+            }
+
             return ReturnNoCommandCanBeRun();
         }
 

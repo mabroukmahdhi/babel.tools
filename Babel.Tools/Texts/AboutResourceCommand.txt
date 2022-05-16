@@ -1,0 +1,12 @@
+﻿
+Usage: bt resx [action]
+
+Actions:
+  -h|--help			Display help.
+  -i|--import		Import resources from the Excel file.
+  -e|--export		Export resources to the Excel file.
+
+
+
+
+
