@@ -91,6 +91,7 @@ namespace Babel.Tools.Brokers.Executers
             string destFolder = Path.Combine(
                 exportFilesTo,
                 DateTime.Now.ToString("yyyy"),
+                DateTime.Now.ToString("yyyyMM"),
                 DateTime.Now.ToString("yyyyMMdd"));
 
             if (!Directory.Exists(destFolder))

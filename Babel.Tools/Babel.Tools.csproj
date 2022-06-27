@@ -46,7 +46,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="xcopy &quot;$(ProjectDir)bin\Release\net6.0\*.*&quot; &quot;C:\MMA\000 - BABEL\03 - Tools\ConsoleBabelTools&quot; /Y /I /E" />
+    <Exec Command="xcopy &quot;$(ProjectDir)bin\Release\net6.0\*.*&quot; &quot;C:\01 - MMA\012 - BABEL\0122 - TOOLS\PROD\ConsoleBabelTools&quot; /Y /I /E" />
   </Target>
 
 </Project>
